@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARiMF Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>SARiMF Dashboard</h1>
+        <p>Secure Application Risk Management Framework</p>
+    </div>
+
+    <div class="content">
+        <div class="module threat-scanner">
+            <h2>Threat Scanner</h2>
+            <p>Analyze application threats based on STRIDE categories.</p>
+            <select id="strideCategory">
+                <option value="Spoofing">Spoofing</option>
+                <option value="Tampering">Tampering</option>
+                <option value="Repudiation">Repudiation</option>
+                <option value="Information Disclosure">Information Disclosure</option>
+                <option value="Denial of Service">Denial of Service</option>
+                <option value="Elevation of Privilege">Elevation of Privilege</option>
+            </select>
+            <button onclick="runScanner()">Run Scanner</button>
+            <ul id="scannerResults"></ul>
+        </div>
+
+        <div class="module dread-evaluator">
+            <h2>DREAD Evaluator</h2>
+            <p>Evaluate risks using DREAD methodology.</p>
+            <form id="dreadForm">
+                <label for="damage">Damage Potential (1-10):</label>
+                <input type="number" id="damage" min="1" max="10">
+                <label for="repro">Reproducibility (1-10):</label>
+                <input type="number" id="repro" min="1" max="10">
+                <label for="exploit">Exploitability (1-10):</label>
+                <input type="number" id="exploit" min="1" max="10">
+                <label for="affected">Affected Users (1-10):</label>
+                <input type="number" id="affected" min="1" max="10">
+                <label for="discover">Discoverability (1-10):</label>
+                <input type="number" id="discover" min="1" max="10">
+                <button type="button" onclick="evaluateDREAD()">Evaluate Risks</button>
+            </form>
+            <p id="dreadScore">Risk Score: N/A</p>
+        </div>
+
+        <div class="module mitigation-recommender">
+            <h2>Mitigation Recommender</h2>
+            <p>Get actionable recommendations for identified risks.</p>
+            <button onclick="recommendMitigations()">Generate Recommendations</button>
+            <ul id="mitigationResults"></ul>
+        </div>
+
+        <div class="module dashboard">
+            <h2>Interactive Dashboard</h2>
+            <canvas id="riskChart" width="400" height="200"></canvas>
+            <button onclick="showDashboard()">Refresh Dashboard</button>
+        </div>
+
+        <div class="module ai-analyzer">
+            <h2>AI Analyzer</h2>
+            <p>Analyze risk patterns using AI to provide detailed insights.</p>
+            <button onclick="analyzeWithAI()">Analyze with AI</button>
+            <p id="aiResults">AI Insights: N/A</p>
+        </div>
+
+        <div class="module vulnerability-database">
+            <h2>Vulnerability Database</h2>
+            <p>Search for vulnerabilities related to identified threats.</p>
+            <input type="text" id="vulnerabilitySearch" placeholder="Enter threat keyword">
+            <button onclick="searchVulnerabilities()">Search</button>
+            <ul id="vulnerabilityResults"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
